@@ -1,6 +1,10 @@
 
 # Created by https://www.gitignore.io/api/node
 
+Resets.json
+connectins.txt
+
+
 ### Node ###
 # Logs
 logs
@@ -63,8 +67,13 @@ typings/
 
 
 
-# End of https://www.gitignore.io/api/node
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
+# End of https://www.gitignore.io/api/node
+
+# Elastic Beanstalk Files
+
+.elasticbeanstalk/*
+
+!.elasticbeanstalk/*.cfg.yml
+
+!.elasticbeanstalk/*.global.yml
+
