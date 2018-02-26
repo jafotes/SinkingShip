@@ -7,12 +7,20 @@
 </head>
 <body>
 
+    <ul>
+        <li><a class="active" href="/">Home</a></li>
+        <li><a href="/leaderboard">Leaderboard</a></li>
+        <li><a href="/countdown">Countdown</a></li>
+        <li><a href="/about">About</a></li>
+    </ul>
+
 <div id="clock">
-    <p id="counterup" class="time"></p>
-    <form action="/" method="post">
-        <input type="hidden" id="reset_request_date_time" name="reset_request_date_time" value="CurrentDateTime"> 
-    </form>
-</div>
+
+        <p id="counterup" class="time"></p>
+        <form action="/" method="post">
+            <input type="hidden" id="reset_request_date_time" name="reset_request_date_time" value="CurrentDateTime"> 
+        </form>
+    </div>
 
 <script>
 
@@ -48,4 +56,5 @@ function upTime(countTo) {
 </script>
 
 </body>
+
 </html>
