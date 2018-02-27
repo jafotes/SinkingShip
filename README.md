@@ -29,7 +29,7 @@
 ]
 ```
 - run "npm install"
-- run node server
+- run "node server"
 - Access the webapp through http:/localhost/
 
 ### Known Issues
