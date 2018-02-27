@@ -29,8 +29,8 @@
 ]
 ```
 - run "npm install"
-- run "node server"
-- Access the webapp through http:/localhost/
+- run "node server.js" (or PORT=8000 node server.js)
+- Access the webapp through http:/localhost:3000
 
 ### Known Issues
 
