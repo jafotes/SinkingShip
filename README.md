@@ -8,15 +8,12 @@ Setup
 ```json
 [
         {
-                "counter": 2,
                 "datetime": "feb,22,2018,09:00:00"
         },
         {
-                "counter": 1,
                 "datetime": "jan,22,2018,10:00:00"
         },
         {
-                "counter": 0,
                 "datetime": "jan,9,2018,09:00:00"
         }
 ]
