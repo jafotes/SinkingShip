@@ -29,7 +29,7 @@
 ]
 ```
 - run "npm install"
-- run "node server.js" (or PORT=8000 node server.js)
+- run "node server.js" (or "PORT=8000 node server.js" to use port 8000 )
 - Access the webapp through http:/localhost:3000
 
 ### Known Issues
