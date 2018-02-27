@@ -1,6 +1,7 @@
 # sinkingship
 
-Setup
+## Setup
+
 - Install node.js
 - Clone this repo
 - Move inside the repo folder
