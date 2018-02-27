@@ -1,6 +1,6 @@
 # sinkingship
 
-## Setup
+### Setup
 
 - Install node.js
 - Clone this repo
@@ -31,3 +31,12 @@
 - run "npm install"
 - run node server
 - Access the webapp through http:/localhost/
+
+### Known Issues
+
+- Navigation Bar is not suitable for mobile devices
+
+### TODO
+
+- Add leaderboard (use Resets.json to compute time intervals)
+- Create countdown table instead of only one (use Countdown.json)
