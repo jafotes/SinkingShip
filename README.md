@@ -5,7 +5,7 @@ Setup
 - Clone this repo
 - Move inside the repo folder
 - Create a Resets.json file
-```
+```json
 [
         {
                 "counter": 2,
@@ -23,7 +23,7 @@ Setup
 
 ```
 - Create a Countdown.json file
-```
+```json
 [
     {
         "datetime": "mar,16,2018,18:00:00"
