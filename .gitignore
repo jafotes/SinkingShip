@@ -2,8 +2,8 @@
 # Created by https://www.gitignore.io/api/node
 
 Resets.json
-connections.txt
-
+Countdown.json
+test.html
 
 ### Node ###
 # Logs
