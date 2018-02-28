@@ -1,59 +1,67 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="/css/style.css">
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 </head>
+
 <body>
+    <div class="topnav" id="myTopnav">
+        <a href="/" class="active">Home</a>
+        <a href="/leaderboard">Leaderboard</a>
+        <a href="/countdown">Countdown</a>
+        <a href="/about">About</a>
+        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="navBar()">&#9776;</a>
+    </div>
 
-    <ul>
-        <li><a class="active" href="/">Home</a></li>
-        <li><a href="/leaderboard">Leaderboard</a></li>
-        <li><a href="/countdown">Countdown</a></li>
-        <li><a href="/about">About</a></li>
-    </ul>
-
-<div id="clock">
-
+    <div id="clock">
         <p id="counterup" class="time"></p>
         <form action="/" method="post">
-            <input type="hidden" id="reset_request_date_time" name="reset_request_date_time" value="CurrentDateTime"> 
+            <input type="hidden" id="reset_request_date_time" name="reset_request_date_time" value="CurrentDateTime">
         </form>
     </div>
 
-<script>
+    <script>
+        window.onload = function () {
+            // Month,Day,Year,Hour,Minute,Second
+            countTo = new Date('<%= date%>');
+            upTime(countTo);
+        }
 
-window.onload=function() {
-  // Month,Day,Year,Hour,Minute,Second
-  countTo = new Date('<%= date%>');
-  upTime(countTo);
-}
+        function upTime(countTo) {
+            now = new Date();
+            countTo = new Date(countTo);
+            difference = (now - countTo);
 
-function upTime(countTo) {
-  now = new Date();
-  countTo = new Date(countTo);
-  difference = (now-countTo);
+            days = Math.floor(difference / (60 * 60 * 1000 * 24) * 1);
+            hours = Math.floor((difference % (60 * 60 * 1000 * 24)) / (60 * 60 * 1000) * 1);
+            mins = Math.floor(((difference % (60 * 60 * 1000 * 24)) % (60 * 60 * 1000)) / (60 * 1000) * 1);
+            secs = Math.floor((((difference % (60 * 60 * 1000 * 24)) % (60 * 60 * 1000)) % (60 * 1000)) / 1000 * 1);
 
-  days=Math.floor(difference/(60*60*1000*24)*1);
-  hours=Math.floor((difference%(60*60*1000*24))/(60*60*1000)*1);
-  mins=Math.floor(((difference%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
-  secs=Math.floor((((difference%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1);
+            formated_days = ("0" + days).slice(-2);
+            formated_hours = ("0" + hours).slice(-2);
+            formated_mins = ("0" + mins).slice(-2);
+            formated_secs = ("0" + secs).slice(-2);
 
-  formated_days = ("0" + days).slice(-2);
-  formated_hours = ("0" + hours).slice(-2);
-  formated_mins= ("0" + mins).slice(-2);
-  formated_secs= ("0" + secs).slice(-2);
+            counterup = document.getElementById("counterup");
+            counterup.innerHTML = formated_days + "d " + formated_hours + "h " + formated_mins + "m " + formated_secs + "s ";
+            document.getElementById("reset_request_date_time").value = now;
 
-  counterup = document.getElementById("counterup");
-  counterup.innerHTML = formated_days + "d " + formated_hours + "h "+ formated_mins + "m " + formated_secs + "s ";
-  document.getElementById("reset_request_date_time").value = now;
+            clearTimeout(upTime.to);
+            upTime.to = setTimeout(function () { upTime(countTo); }, 1000);
+        }
 
-  clearTimeout(upTime.to);
-  upTime.to=setTimeout(function(){ upTime(countTo); },1000);
-}
-
-</script>
+        function navBar() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
 
 </body>
 

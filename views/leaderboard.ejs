@@ -9,16 +9,28 @@
 
 <body>
 
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a class="active" href="/leaderboard">Leaderboard</a></li>
-        <li><a href="/countdown">Countdown</a></li>
-        <li><a href="/about">About</a></li>
-    </ul>
+    <div class="topnav" id="myTopnav">
+        <a href="/">Home</a>
+        <a href="/leaderboard" class="active">Leaderboard</a>
+        <a href="/countdown">Countdown</a>
+        <a href="/about">About</a>
+        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="navBar()">&#9776;</a>
+    </div>
 
     <div id="clock">
         <p id="counterup" class="text">Coming soon</p>
     </div>
+
+    <script>
+        function navBar() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            }
+            else
+            { x.className = "topnav"; }
+        }
+    </script>
 
 </body>
 

@@ -13,24 +13,15 @@ app.get('/', function (req, res) {
     var json = JSON.parse(fs.readFileSync('Resets.json', 'utf8'));
     let date_time = json[0].datetime;
 
-    console.log(req.ip);
-    fs.appendFile('connections.txt', req.ip +'\n', function (err) {
-        if (err) throw err;
-        console.log('Saved!');
-    });
-    res.render('index', {date: date_time});
+    res.render('index', { date: date_time });
 })
 
-app.post('/', function (req, res) {
+/* app.post('/', function (req, res) {
     var json = JSON.parse(fs.readFileSync('Resets.json', 'utf8'));
     let date_time = json[0].datetime;
-    console.log(req.ip +" "+ req.body.name +" "+ req.body.reset_request_date_time);
-    fs.appendFile('reset_request.txt', req.ip +" "+ req.body.name +" "+ req.body.reset_request_date_time+'\n', function (err) {
-        if (err) throw err;
-        console.log('Saved!');
-    });
+
     res.redirect('/');
-})
+}) */
 
 
 app.get('/countdown', function (req, res) {
@@ -40,30 +31,31 @@ app.get('/countdown', function (req, res) {
     res.render('countdown', { date: date_time });
 })
 
-app.post('/countdown', function (req, res) {
+/* app.post('/countdown', function (req, res) {
     var json = JSON.parse(fs.readFileSync('Countdown.json', 'utf8'));
     let date_time = json[0].datetime;
 
     res.redirect('/countdown');
-})
+}) */
 
 app.get('/leaderboard', function (req, res) {
     res.render('leaderboard', {});
 })
 
-app.post('/leaderboard', function(req, res) {
-    res.redirect('/leaderboard')
+/* app.post('/leaderboard', function (req, res) {
+    res.redirect('/leaderboard');
 })
+ */
 
 app.get('/about', function (req, res) {
     res.render('about', {});
 })
 
-app.post('/about', function (req, res) {
-    res.redirect('/about')
-})
+/* app.post('/about', function (req, res) {
+    res.redirect('/about');
+}) */
 
 app.listen(port, function () {
-    console.log('Example app listening on port ' + port + '!')
+    console.log('Sinkingship listening on port ' + port + '!')
 })
 
