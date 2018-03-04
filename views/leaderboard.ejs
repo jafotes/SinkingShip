@@ -18,7 +18,26 @@
     </div>
 
     <div id="clock">
-        <p id="counterup" class="text">Coming soon</p>
+            <table id="leaderboard" class="text">
+                <tr>
+                    <td><p id="counterup" class="text">1º   </p></td>
+                    <td id="first_place">
+                        <p id="counterup" class="text"><%= alldates[0][0]%>d
+                            <%= alldates[0][1]%>h </p>
+                    </td>
+                </tr>
+                <tr>
+                    <p id="counterup" class="text"><td><p id="counterup" class="text">2º   </p></td>
+                    <td id="second_place">
+                        <p id="counterup" class="text"><%= alldates[1][0]%>d
+                            <%= alldates[1][1]%>h</p>
+                    </td>
+                </tr>
+                <!--                 <tr>
+                    <td>3º</td>
+                    <td id="third_place"><%= alldates[2]%></td>
+                </tr> -->
+            </table>
     </div>
 
     <script>

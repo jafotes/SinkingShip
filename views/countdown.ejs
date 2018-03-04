@@ -18,45 +18,64 @@
     </div>
 
     <div id="clock">
-
-        <p id="counterup" class="time"></p>
-        <form action="/" method="post">
-            <input type="hidden" id="reset_request_date_time" name="reset_request_date_time" value="CurrentDateTime">
-        </form>
+        <table id="leaderboard" class="text">
+            <tr>
+                <td>
+                    <p id="counterup1" class="time"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p id="counterup2" class="time"></p>
+                </td>
+            </tr>
+        </table>
     </div>
 
     <script>
         window.onload = function () {
             // Month,Day,Year,Hour,Minute,Second
-            countDown = new Date('<%= date%>');
-            upTime(countDown);
+            var countDowns = []
+            countDown1 = new Date('<%= date1%>');
+            countDown2 = new Date('<%= date2%>');
+            countDowns.push(countDown1);
+            countDowns.push(countDown2);
+            upTime(countDowns, countDowns.length);
+
         }
 
-        function upTime(countDown) {
-            now = new Date();
-            countDown = new Date(countDown);
-            difference = (countDown - now);
+        function upTime(countDowns, len) {
+            var id = "counterup1";
 
-            days = Math.floor(difference / (60 * 60 * 1000 * 24) * 1);
-            hours = Math.floor((difference % (60 * 60 * 1000 * 24)) / (60 * 60 * 1000) * 1);
-            mins = Math.floor(((difference % (60 * 60 * 1000 * 24)) % (60 * 60 * 1000)) / (60 * 1000) * 1);
-            secs = Math.floor((((difference % (60 * 60 * 1000 * 24)) % (60 * 60 * 1000)) % (60 * 1000)) / 1000 * 1);
+            for (var i = 0; i < len; i++) {
+                now = new Date();
+                countDown = new Date(countDowns[i]);
+                difference = (countDown - now);
 
-            formated_days = ("0" + days).slice(-2);
-            formated_hours = ("0" + hours).slice(-2);
-            formated_mins = ("0" + mins).slice(-2);
-            formated_secs = ("0" + secs).slice(-2);
+                days = Math.floor(difference / (60 * 60 * 1000 * 24) * 1);
+                hours = Math.floor((difference % (60 * 60 * 1000 * 24)) / (60 * 60 * 1000) * 1);
+                mins = Math.floor(((difference % (60 * 60 * 1000 * 24)) % (60 * 60 * 1000)) / (60 * 1000) * 1);
+                secs = Math.floor((((difference % (60 * 60 * 1000 * 24)) % (60 * 60 * 1000)) % (60 * 1000)) / 1000 * 1);
 
-            counterup = document.getElementById("counterup");
-            counterup.innerHTML = formated_days + "d " + formated_hours + "h " + formated_mins + "m " + formated_secs + "s ";
-            document.getElementById("reset_request_date_time").value = now;
+                formated_days = ("0" + days).slice(-2);
+                formated_hours = ("0" + hours).slice(-2);
+                formated_mins = ("0" + mins).slice(-2);
+                formated_secs = ("0" + secs).slice(-2);
 
-            clearInterval(upTime.to);
-            if (difference < 0) {
-                document.getElementById("reset_request_date_time").value = "EXPIRED"
-            } else {
-                upTime.to = setInterval(function () { upTime(countDown); }, 1000);
+                counterup = document.getElementById(id);
+                counterup.innerHTML = formated_days + "d " + formated_hours + "h " + formated_mins + "m " + formated_secs + "s ";
+                if (difference < 0) {
+                    document.getElementById(id).value = "EXPIRED";
+                }
+
+                if (id == "counterup1") {
+                    id = "counterup2"
+                } else {
+                    id = "counterup1"
+                }
             }
+            clearInterval(upTime.to);
+            upTime.to = setInterval(function () { upTime(countDowns, len); }, 1000);
         }
 
         function navBar() {

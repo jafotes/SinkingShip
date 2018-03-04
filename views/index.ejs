@@ -18,9 +18,6 @@
 
     <div id="clock">
         <p id="counterup" class="time"></p>
-        <form action="/" method="post">
-            <input type="hidden" id="reset_request_date_time" name="reset_request_date_time" value="CurrentDateTime">
-        </form>
     </div>
 
     <script>
@@ -47,7 +44,6 @@
 
             counterup = document.getElementById("counterup");
             counterup.innerHTML = formated_days + "d " + formated_hours + "h " + formated_mins + "m " + formated_secs + "s ";
-            document.getElementById("reset_request_date_time").value = now;
 
             clearTimeout(upTime.to);
             upTime.to = setTimeout(function () { upTime(countTo); }, 1000);
