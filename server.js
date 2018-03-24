@@ -53,12 +53,10 @@ app.get('/leaderboard', function (req, res) {
     }
 
     alldates.sort(function (a, b) {
-        var c = new Date(a.date);
-        var d = new Date(b.date);
-        return c - d;
+        return b - a;
     });
 
-    for (var i = alldates.length - 1; i >= 0; i--) {
+    for (var i = 0; i < alldates.length; i++) {
         days = Math.floor(alldates[i] / (60 * 60 * 1000 * 24) * 1);
         hours = Math.floor((alldates[i] % (60 * 60 * 1000 * 24)) / (60 * 60 * 1000) * 1);
         formated_days = ("0" + days).slice(-2);

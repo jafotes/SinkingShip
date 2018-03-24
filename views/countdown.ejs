@@ -66,8 +66,9 @@
                 counterup.innerHTML = formated_days + "d " + formated_hours + "h " + formated_mins + "m " + formated_secs + "s ";
                 if (difference < 0) {
                     document.getElementById(id).value = "EXPIRED";
+                    counterup.innerHTML = "EXPIRED";
                 }
-
+                    
                 if (id == "counterup1") {
                     id = "counterup2"
                 } else {
